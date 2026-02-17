@@ -1,0 +1,29 @@
+<resources>
+    <color name="colorPrimary">#42A5F5</color>
+    <color name="colorPrimaryDark">#0D47A1</color>
+    <color name="colorAccent">#90CAF9</color>
+    <color name="colorControlHighlight">#40FFFFFF</color>
+    <color name="colorControlNormal">#BDBDBD</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorBackground">#121212</color>
+    <color name="colorSurfaceContainer">#1E222B</color>
+    <color name="colorSurfaceContainerHigh">#2C313C</color>
+    <color name="card_bg">#1E222B</color>
+    <color name="card_stroke">#444444</color>
+    <color name="text_heading">#FFFFFF</color>
+    <color name="text_body">#E0E0E0</color>
+    <color name="text_caption">#9E9E9E</color>
+    <color name="pay_success_text">#00E676</color>
+    <color name="pay_icon_tint">#00E676</color>
+    <color name="image_placeholder">#2B2B2B</color>
+    <color name="cat_blue">#90CAF9</color>
+    <color name="cat_blue_bg">#1A237E</color>
+    <color name="cat_red">#EF9A9A</color>
+    <color name="cat_red_bg">#421313</color>
+    <color name="cat_green">#A5D6A7</color>
+    <color name="cat_green_bg">#1B3320</color>
+    <color name="cat_purple">#CE93D8</color>
+    <color name="cat_purple_bg">#2D1A33</color>
+    <color name="cat_orange">#FFCC80</color>
+    <color name="cat_orange_bg">#3E2723</color>
+</resources>

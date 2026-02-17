@@ -1,0 +1,82 @@
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+	<com.google.android.material.card.MaterialCardView
+		android:id="@+id/card_item"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:cardBackgroundColor="#151815"
+		android:layout_marginHorizontal="2dp"
+		android:layout_marginVertical="4dp"
+		app:cardCornerRadius="16dp"
+		app:strokeWidth="1dp"
+		app:strokeColor="#222222"
+		app:cardElevation="0dp">
+		<LinearLayout
+			android:id="@+id/linear3"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="12dp"
+			android:gravity="center_vertical"
+			android:orientation="horizontal">
+			<com.google.android.material.card.MaterialCardView
+				android:id="@+id/cardview2"
+				android:layout_width="36dp"
+				android:layout_height="36dp"
+				app:cardBackgroundColor="#1B2A16"
+				app:cardCornerRadius="30dp"
+				app:cardElevation="0dp"
+				app:strokeWidth="0dp"
+				app:rippleColor="@android:color/transparent"
+				app:cardForegroundColor="@android:color/transparent">
+				<ImageView
+					android:id="@+id/file_type_icon"
+					android:focusable="false"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:padding="8dp"
+					android:src="@drawable/icon_upload_file"
+					android:scaleType="fitCenter"
+					app:tint="#52D02E" />
+			</com.google.android.material.card.MaterialCardView>
+			<LinearLayout
+				android:id="@+id/linear4"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:layout_weight="1"
+				android:layout_marginStart="12dp">
+				<TextView
+					android:id="@+id/txt_file_name"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="app-icon-v2.png"
+					android:textSize="13sp"
+					android:textStyle="bold"
+					android:textColor="#FFFFFF"
+					android:focusable="false" />
+				<TextView
+					android:id="@+id/txt_file_size"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="1.2 MB"
+					android:textSize="10sp"
+					android:textColor="#666666"
+					android:focusable="false" />
+			</LinearLayout>
+			<ImageView
+				android:id="@+id/btn_remove"
+				android:layout_width="36dp"
+				android:layout_height="36dp"
+				android:padding="8dp"
+				android:src="@drawable/icon_clear"
+				android:scaleType="fitXY"
+				android:focusable="false"
+				app:tint="#9E9E9E" />
+		</LinearLayout>
+	</com.google.android.material.card.MaterialCardView>
+</LinearLayout>

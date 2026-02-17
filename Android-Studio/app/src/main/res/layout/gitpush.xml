@@ -1,0 +1,248 @@
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="#0B0E0B">
+	<LinearLayout
+		android:id="@+id/toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="60dp"
+		android:gravity="center_vertical"
+		android:orientation="horizontal"
+		android:paddingHorizontal="16dp">
+		<ImageView
+			android:id="@+id/img_back"
+			android:layout_width="30dp"
+			android:layout_height="30dp"
+			android:padding="3dp"
+			android:src="@drawable/icon_arrow"
+			android:scaleType="fitXY"
+			app:tint="#FFFFFF" />
+		<TextView
+			android:id="@+id/textview32"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:gravity="center_horizontal|center_vertical"
+			android:text="Upload &amp; Commit"
+			android:textSize="18sp"
+			android:textStyle="bold"
+			android:textColor="#FFFFFF"
+			android:layout_weight="1" />
+		<ImageView
+			android:id="@+id/img_menu"
+			android:layout_width="30dp"
+			android:layout_height="30dp"
+			android:padding="3dp"
+			android:src="@drawable/icon_more_vert"
+			android:scaleType="fitXY"
+			app:tint="#FFFFFF" />
+	</LinearLayout>
+	<androidx.core.widget.NestedScrollView
+		android:id="@+id/vscroll6"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:scrollbars="none"
+		android:layout_above="@id/btn_commit"
+		android:layout_below="@id/toolbar">
+		<LinearLayout
+			android:id="@+id/linear19"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="16dp"
+			android:orientation="vertical">
+			<com.google.android.material.card.MaterialCardView
+				android:id="@+id/cardview6"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				app:cardBackgroundColor="#1A1A1A"
+				app:cardCornerRadius="24dp"
+				app:cardElevation="0dp"
+				app:strokeWidth="0dp">
+				<RelativeLayout
+					android:id="@+id/relativelayout7"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:padding="20dp">
+					<TextView
+						android:id="@+id/txt_label_repo"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="CONNECTED REPOSITORY"
+						android:textSize="11sp"
+						android:textStyle="bold"
+						android:textColor="#666666" />
+					<ImageView
+						android:id="@+id/icon_repo"
+						android:layout_width="24dp"
+						android:layout_height="24dp"
+						android:layout_marginTop="12dp"
+						android:src="@drawable/icon_account_tree"
+						android:scaleType="fitXY"
+						app:tint="#52D02E"
+						android:layout_below="@id/txt_label_repo" />
+					<TextView
+						android:id="@+id/txt_repo_name"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="10dp"
+						android:text="acme-corp / mobile-app-pro"
+						android:textSize="15sp"
+						android:textStyle="bold"
+						android:textColor="#FFFFFF"
+						android:layout_marginStart="10dp"
+						android:layout_toStartOf="@id/card_profile_container"
+						android:layout_below="@id/txt_label_repo"
+						android:layout_toEndOf="@id/icon_repo" />
+					<TextView
+						android:id="@+id/txt_branch"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="4dp"
+						android:text="production-branch"
+						android:textSize="13sp"
+						android:textColor="#9E9E9E"
+						android:layout_marginStart="10dp"
+						android:layout_below="@id/txt_repo_name"
+						android:layout_toEndOf="@id/icon_repo" />
+					<com.google.android.material.button.MaterialButton
+						android:id="@+id/btn_switch_repo"
+						android:layout_width="wrap_content"
+						android:layout_height="42dp"
+						android:layout_marginTop="16dp"
+						android:text="Switch Repo"
+						android:textSize="11sp"
+						style="@style/Widget.Material3.Button.TonalButton"
+						android:textAllCaps="false"
+						app:backgroundTint="#262626"
+						app:cornerRadius="15dp"
+						android:layout_below="@id/txt_branch" />
+					<com.google.android.material.card.MaterialCardView
+						android:id="@+id/card_profile_container"
+						android:layout_width="56dp"
+						android:layout_height="56dp"
+						app:cardBackgroundColor="#222222"
+						app:cardCornerRadius="28dp"
+						app:cardElevation="0dp"
+						app:strokeWidth="0dp"
+						android:layout_alignParentEnd="true"
+						android:layout_centerVertical="true">
+						<ImageView
+							android:id="@+id/imageview15"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:src="@drawable/icon_person"
+							android:scaleType="fitXY" />
+					</com.google.android.material.card.MaterialCardView>
+				</RelativeLayout>
+			</com.google.android.material.card.MaterialCardView>
+			<LinearLayout
+				android:id="@+id/layout_upload"
+				android:layout_width="match_parent"
+				android:layout_height="200dp"
+				android:layout_marginTop="20dp"
+				android:background="@drawable/dotted_border"
+				android:gravity="center_horizontal|center_vertical"
+				android:orientation="vertical">
+				<com.google.android.material.card.MaterialCardView
+					android:id="@+id/linear20"
+					android:layout_width="50dp"
+					android:layout_height="50dp"
+					app:cardBackgroundColor="#1B2A16"
+					app:cardCornerRadius="30dp"
+					app:cardElevation="0dp"
+					app:strokeWidth="0dp"
+					app:rippleColor="@android:color/transparent"
+					app:cardForegroundColor="@android:color/transparent">
+					<ImageView
+						android:id="@+id/imageview16"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:padding="12dp"
+						android:src="@drawable/icon_upload_file"
+						android:scaleType="fitCenter"
+						app:tint="#52D02E" />
+				</com.google.android.material.card.MaterialCardView>
+				<TextView
+					android:id="@+id/textview33"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="16dp"
+					android:text="Tap to select or drop files"
+					android:textSize="16sp"
+					android:textStyle="bold"
+					android:textColor="#FFFFFF" />
+				<TextView
+					android:id="@+id/guide_tv"
+					android:layout_width="260dp"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="6dp"
+					android:gravity="center_horizontal|center_vertical"
+					android:text="Images, APKs, and other binary files are supported"
+					android:textSize="12sp"
+					android:textColor="#9E9E9E"
+					android:paddingHorizontal="40dp" />
+				<com.google.android.material.button.MaterialButton
+					android:id="@+id/btn_add_files"
+					android:layout_width="wrap_content"
+					android:layout_height="40dp"
+					android:layout_marginTop="18dp"
+					android:text="Add Files"
+					android:textSize="12sp"
+					android:textColor="#000000"
+					android:paddingHorizontal="25dp"
+					android:textAllCaps="false"
+					app:backgroundTint="#FFFFFF"
+					app:cornerRadius="24dp" />
+			</LinearLayout>
+			<RelativeLayout
+				android:id="@+id/relativelayout8"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="28dp"
+				android:layout_marginBottom="12dp">
+				<TextView
+					android:id="@+id/txt_staged_count"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="STAGED FILES (0)"
+					android:textSize="11sp"
+					android:textStyle="bold"
+					android:textColor="#666666"
+					android:letterSpacing="0.1" />
+				<TextView
+					android:id="@+id/btn_clear_all"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Clear All"
+					android:textSize="11sp"
+					android:textStyle="bold"
+					android:textColor="#52D02E"
+					android:layout_alignParentEnd="true" />
+			</RelativeLayout>
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/recyclerview_files"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:nestedScrollingEnabled="false" />
+		</LinearLayout>
+	</androidx.core.widget.NestedScrollView>
+	<com.google.android.material.button.MaterialButton
+		android:id="@+id/btn_commit"
+		android:layout_width="match_parent"
+		android:layout_height="60dp"
+		android:layout_margin="16dp"
+		android:text="COMMIT &amp; PUSH"
+		android:textSize="15sp"
+		android:textStyle="bold"
+		android:textColor="#000000"
+		android:textAllCaps="true"
+		app:backgroundTint="#52D02E"
+		app:cornerRadius="30dp"
+		app:icon="@drawable/ic_cloud_upload"
+		app:iconGravity="textStart"
+		app:iconSize="22dp"
+		app:iconTint="#000000"
+		android:layout_alignParentBottom="true" />
+</RelativeLayout>

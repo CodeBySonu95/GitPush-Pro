@@ -1,0 +1,128 @@
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:background="#0B0E0B">
+	<com.google.android.material.card.MaterialCardView
+		android:id="@+id/cardview2"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="12dp"
+		app:cardBackgroundColor="#151815"
+		app:cardCornerRadius="24dp"
+		app:cardElevation="0dp"
+		app:strokeWidth="1dp"
+		app:strokeColor="#222222">
+		<LinearLayout
+			android:id="@+id/linear_root"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="16dp"
+			android:orientation="vertical">
+			<View
+				android:id="@+id/view_handle"
+				android:layout_width="40dp"
+				android:layout_height="4dp"
+				android:layout_marginBottom="20dp"
+				android:background="#222222"
+				android:layout_gravity="center_horizontal"
+				android:alpha="0.8" />
+			<TextView
+				android:id="@+id/tv_sort_title"
+				android:focusable="false"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="16dp"
+				android:text="SORT BY"
+				android:textSize="12sp"
+				android:textStyle="bold"
+				android:textColor="#52D02E"
+				android:letterSpacing="0.1"
+				android:layout_marginStart="4dp" />
+			<LinearLayout
+				android:id="@+id/layout_newest"
+				android:layout_width="match_parent"
+				android:layout_height="52dp"
+				android:background="?attr/selectableItemBackground"
+				android:gravity="center_vertical"
+				android:orientation="horizontal"
+				android:focusable="true"
+				android:paddingHorizontal="8dp">
+				<TextView
+					android:id="@+id/newest_tv"
+					android:focusable="false"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:text="Newest Commits First"
+					android:textSize="14sp"
+					android:textColor="#FFFFFF"
+					android:layout_weight="1" />
+				<RadioButton
+					android:id="@+id/rb_newest"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="12sp"
+					android:clickable="false"
+					android:focusable="false"
+					android:buttonTint="#52D02E" />
+			</LinearLayout>
+			<LinearLayout
+				android:id="@+id/layout_sucess"
+				android:layout_width="match_parent"
+				android:layout_height="52dp"
+				android:background="?attr/selectableItemBackground"
+				android:gravity="center_vertical"
+				android:orientation="horizontal"
+				android:focusable="true"
+				android:paddingHorizontal="8dp">
+				<TextView
+					android:id="@+id/sucess_tv"
+					android:focusable="false"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:text="Successfully Pushed"
+					android:textSize="14sp"
+					android:textColor="#FFFFFF"
+					android:layout_weight="1" />
+				<RadioButton
+					android:id="@+id/rb_sucess"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="12sp"
+					android:clickable="false"
+					android:focusable="false"
+					android:buttonTint="#52D02E" />
+			</LinearLayout>
+			<LinearLayout
+				android:id="@+id/layout_failed"
+				android:layout_width="match_parent"
+				android:layout_height="52dp"
+				android:background="?attr/selectableItemBackground"
+				android:gravity="center_vertical"
+				android:orientation="horizontal"
+				android:focusable="true"
+				android:paddingHorizontal="8dp">
+				<TextView
+					android:id="@+id/failed_tv"
+					android:focusable="false"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:text="Failed Pushes Only"
+					android:textSize="14sp"
+					android:textColor="#FFFFFF"
+					android:layout_weight="1" />
+				<RadioButton
+					android:id="@+id/rb_failed"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="12sp"
+					android:clickable="false"
+					android:focusable="false"
+					android:buttonTint="#52D02E" />
+			</LinearLayout>
+		</LinearLayout>
+	</com.google.android.material.card.MaterialCardView>
+</LinearLayout>

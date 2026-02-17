@@ -1,0 +1,7 @@
+----------
+1. ERROR in /storage/emulated/0/.sketchware/mysc/622/app/src/main/java/com/codebysonu/gitpushpro/CommitprogressActivity.java (at line 143)
+	_drawer.openDrawer(android.view.Gravity.LEFT);
+	^^^^^^^
+_drawer cannot be resolved
+----------
+1 problem (1 error)
