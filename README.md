@@ -1,29 +1,33 @@
-GitPush Pro                  
-GitPush Pro is a mobile GitHub committer built with Sketchware Pro.      
-Push files directly to your repository from Android — no PC required.  
-
-🚀 Features  
-
-GitHub Personal Access Token authentication                         
-Connect public & private repositories                   
-Upload APK, SWB, images, and other files              
-Commit & push to any branch            
-History management system            
-Optimized for better performance & stability           
-Advanced Java logic implementation          
-Clean and simple UI  
-
-📱 About
-
-This is a demo project focused on learning GitHub API integration and mobile-based commit management.
-
-
-⚠️ Important                 
-
-For learning and personal use only      
-Re-uploading to Play Store or any other store is not allowed         by
-Monetizing or selling this app is strictly prohibited.       
-
-
-Author: CodeBySonu95                                                                                   
-GitHub: github.com/CodeBySonu95
+🚀 GitPush Pro
+​GitPush Pro is a high-performance, user-centric mobile utility designed for developers to manage GitHub repositories directly from Android devices. It eliminates the need for a PC by providing a seamless interface to commit files, track logs, and push updates on the go.
+​✨ Key Features
+​📟 Real-time Terminal: Track your upload progress and synchronization logs through a built-in terminal activity.
+​📂 Advanced File Handling: Effortlessly select and stage APKs, .swb (Sketchware) files, images, and source code.
+​🔐 Secure Authentication: Connect safely using GitHub Personal Access Tokens (PAT), ensuring your account remains protected.
+​🔄 Repository Management: Quickly switch between multiple repositories with a single tap.
+​🎨 Material 3 Design: A modern, information-dense, and dark-themed UI optimized for speed and efficiency.
+​📸 Screenshots
+​<p align="center">
+<img src="https://raw.githubusercontent.com/CodeBySonu95/GitPush-Pro/main/assets/screenshot2.jpg" width="45%" alt="Terminal Activity" />
+<img src="https://raw.githubusercontent.com/CodeBySonu95/GitPush-Pro/main/assets/screenshot3.jpg" width="45%" alt="Main Dashboard" />
+</p>
+​🛠️ Tech Stack
+​Core: Java 8+
+​Platform: Android (Sketchware Pro Environment)
+​UI/UX: Material Design 3 (M3) Components
+​Integration: GitHub REST API
+​Theme: Premium Dark Aesthetic
+​🚀 Getting Started
+​Follow these steps to synchronize your project:
+​Generate PAT: Visit your GitHub Settings and create a Personal Access Token with repo scope.
+​Configure App: Open GitPush Pro, enter your Token and Repository URL, then tap Connect.
+​Stage Files: Use the integrated file picker to select the files you wish to upload.
+​Commit & Push: Enter a descriptive commit message and tap Push. Your changes will be live on GitHub instantly!
+​🤝 Contributing
+​Contributions are welcome! If you'd like to improve the tool:
+​Report Bugs: Open a new issue with detailed steps to reproduce.
+​Feature Requests: Submit an issue describing the proposed feature.
+​Pull Requests: Fork the repo, create your feature branch, and submit a PR.
+​👨‍💻 Author
+​Developed with ❤️ by CodeBySonu95
+​Disclaimer: This tool is intended for mobile developers who need a reliable way to manage their codebases without constant access to a desktop environment.
