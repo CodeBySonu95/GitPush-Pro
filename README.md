@@ -9,18 +9,18 @@ The Ultimate Mobile Tool for GitHub Developers
 </p>
 <p align="center">
 <b>GitPush Pro</b> allows you to manage, commit, and push your code directly from your Android device.
-<br />Designed for efficiency, speed, and mobility.
+Designed for efficiency, speed, and mobility.
 </p>
 📱 Interface Preview
-<table>
+<table width="100%">
 <tr>
-<td align="center">
-<img src="https://raw.githubusercontent.com/CodeBySonu95/GitPush-Pro/main/assets/screenshot2.jpg" width="220px" style="border-radius:10px" />
+<td align="center" width="50%">
+<img src="https://raw.githubusercontent.com/CodeBySonu95/GitPush-Pro/main/assets/screenshot2.jpg" width="220px" style="border-radius:12px; border: 1px solid #333;" />
 <br />
 <b>Dashboard & Commit</b>
 </td>
-<td align="center">
-<img src="https://raw.githubusercontent.com/CodeBySonu95/GitPush-Pro/main/assets/screenshot3.jpg" width="220px" style="border-radius:10px" />
+<td align="center" width="50%">
+<img src="https://raw.githubusercontent.com/CodeBySonu95/GitPush-Pro/main/assets/screenshot3.jpg" width="220px" style="border-radius:12px; border: 1px solid #333;" />
 <br />
 <b>Activity & Terminal</b>
 </td>
@@ -28,23 +28,54 @@ The Ultimate Mobile Tool for GitHub Developers
 </table>
 </div>
 ✨ Key Features
- * 📟 Real-time Terminal: Track your upload progress and sync logs through a built-in terminal activity.
- * 📂 Easy File Management: Directly select and stage APKs, .swb (Sketchware) files, and images.
- * 🔐 Secure GitHub Connection: Personal Access Tokens (PAT) integration for safe authentication.
- * 🔄 Repository Switching: Toggle between different repositories with a single tap.
- * 🎨 Material 3 UI: Modern, clean, and information-dense interface optimized for mobile developers.
+<table width="100%">
+<tr>
+<td><b>📟 Real-time Terminal</b></td>
+<td>Track upload progress and sync logs via built-in terminal activity.</td>
+</tr>
+<tr>
+<td><b>📂 File Management</b></td>
+<td>Directly select and stage APKs, .swb (Sketchware) files, and images.</td>
+</tr>
+<tr>
+<td><b>🔐 Secure Auth</b></td>
+<td>Personal Access Tokens (PAT) integration for safe encrypted sessions.</td>
+</tr>
+<tr>
+<td><b>🔄 Quick Toggle</b></td>
+<td>Switch between different repositories instantly with a single tap.</td>
+</tr>
+<tr>
+<td><b>🎨 Material 3</b></td>
+<td>Modern, clean, and dense UI optimized for mobile developers.</td>
+</tr>
+</table>
 🛠️ Tech Stack
- * Core: Java 8+
- * Environment: Sketchware Pro
- * UI System: Material Design 3 (M3)
- * Integration: GitHub REST API
+<table width="100%">
+<tr>
+<td width="30%"><b>Core Language</b></td>
+<td>Java 8+</td>
+</tr>
+<tr>
+<td><b>Environment</b></td>
+<td>Sketchware Pro (Android)</td>
+</tr>
+<tr>
+<td><b>UI System</b></td>
+<td>Material Design 3 (M3)</td>
+</tr>
+<tr>
+<td><b>Integration</b></td>
+<td>GitHub REST API (v3)</td>
+</tr>
+</table>
 🚀 Setup & Usage
- * Generate Token: Get a Personal Access Token (repo scope) from your GitHub settings.
- * Connect Repo: Paste your Token and Repository URL in GitPush Pro and hit Connect.
- * Add Files: Select the files you want to push from your storage.
- * Commit & Push: Enter your commit message and click <kbd>COMMIT & PUSH</kbd>.
+ * Token: Generate a Personal Access Token (repo scope) from GitHub settings.
+ * Connect: Paste your Token and Repo URL in the app and click Connect.
+ * Stage: Use the file picker to select files from your storage.
+ * Push: Write a commit message and hit <kbd>COMMIT & PUSH</kbd>.
 🤝 Contribution
-Contributions are welcome! If you find a bug or want to suggest a feature, please create an Issue or send a Pull Request.
+Contributions are welcome! If you find a bug or have a feature request, please create an Issue or send a Pull Request.
 <div align="center">
 <br />
 Developed with ❤️ by <b>CodeBySonu95</b>
