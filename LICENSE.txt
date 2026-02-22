@@ -1,0 +1,33 @@
+GitPush Pro – Custom License
+
+Copyright (c) 2026 CodeBySonu95
+All Rights Reserved.
+
+Permission is granted to download and use this project for personal and educational purposes only.
+
+You are allowed to:
+
+Study the source code
+
+Modify the project for personal use
+
+Learn from the implementation
+
+
+You are NOT allowed to:
+
+Re-upload this project on SketchHub or any other platform
+
+Publish this app on Play Store or any other app store
+
+Monetize, sell, or distribute this project in any form
+
+Claim this project as your own
+
+
+Commercial use is strictly prohibited without written permission from the author.
+
+For commercial rights or custom app development inquiries:
+Contact: codebysonu95@gmail.com
+
+Unauthorized distribution or monetization may result in legal action.
