@@ -1,40 +1,77 @@
+<div align="center">
 🚀 GitPush Pro
-​<p align="center">
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/Platform-Android-3DDC84%3Fstyle%3Dfor-the-badge%26logo%3Dandroid%26logoColor%3Dwhite" />
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/Java-8%252B-orange%3Fstyle%3Dfor-the-badge%26logo%3Djava" />
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/UI-Material%25203-blue%3Fstyle%3Dfor-the-badge" />
-<img src="https://www.google.com/search?q=https://img.shields.io/github/license/CodeBySonu95/GitPush-Pro%3Fstyle%3Dfor-the-badge" />
+The Ultimate Mobile Tool for GitHub Developers
+<p>
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Version-1.0.0-blue%3Fstyle%3Dfor-the-badge" alt="Version" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Platform-Android-3DDC84%3Fstyle%3Dfor-the-badge%26logo%3Dandroid%26logoColor%3Dwhite" alt="Platform" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Framework-Sketchware%2520Pro-E91E63%3Fstyle%3Dfor-the-badge" alt="Framework" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/License-MIT-yellow%3Fstyle%3Dfor-the-badge" alt="License" />
 </p>
-​GitPush Pro is a high-performance, user-centric mobile utility designed for developers to manage GitHub repositories directly from Android devices. It eliminates the need for a PC by providing a seamless interface to commit files, track logs, and push updates on the go.
-​✨ Key Features
-​📟 Real-time Terminal: Track your upload progress and synchronization logs through a built-in terminal activity.
-​📂 Advanced File Handling: Effortlessly select and stage APKs, .swb (Sketchware) files, images, and source code.
-​🔐 Secure Authentication: Connect safely using GitHub Personal Access Tokens (PAT), ensuring your account remains protected.
-​🔄 Repository Management: Quickly switch between multiple repositories with a single tap.
-​🎨 Material 3 Design: A modern, information-dense, and dark-themed UI optimized for speed and efficiency.
-​📸 Screenshots
-​<p align="center">
-<img src="https://raw.githubusercontent.com/CodeBySonu95/GitPush-Pro/main/assets/screenshot2.jpg" width="45%" alt="Terminal Activity" />
-<img src="https://raw.githubusercontent.com/CodeBySonu95/GitPush-Pro/main/assets/screenshot3.jpg" width="45%" alt="Main Dashboard" />
+<p align="center">
+<b>GitPush Pro</b> allows you to manage, commit, and push your code directly from your Android device.
+<br />Designed for efficiency, speed, and mobility.
 </p>
-​🛠️ Tech Stack
-​Core: Java 8+
-​Platform: Android (Sketchware Pro Environment)
-​UI/UX: Material Design 3 (M3) Components
-​Integration: GitHub REST API
-​Theme: Premium Dark Aesthetic
-​🚀 Getting Started
-​Follow these steps to synchronize your project:
-​Generate PAT: Visit your GitHub Settings and create a Personal Access Token with repo scope.
-​Configure App: Open GitPush Pro, enter your Token and Repository URL, then tap Connect.
-​Stage Files: Use the integrated file picker to select the files you wish to upload.
-​Commit & Push: Enter a descriptive commit message and tap Push. Your changes will be live on GitHub instantly!
-​🤝 Contributing
-​Contributions are welcome! If you'd like to improve the tool:
-​Report Bugs: Open a new issue with detailed steps to reproduce.
-​Feature Requests: Submit an issue describing the proposed feature.
-​Pull Requests: Fork the repo, create your feature branch, and submit a PR.
-​👨‍💻 Author
-​Developed with ❤️ by CodeBySonu95
-​[!IMPORTANT]
-This tool is intended for mobile developers who need a reliable way to manage their codebases without constant access to a desktop environment.
+</div>
+📱 Interface Preview
+<table width="100%">
+<tr>
+<td width="50%" align="center">
+<img src="https://raw.githubusercontent.com/CodeBySonu95/GitPush-Pro/main/assets/screenshot2.jpg" width="100%" style="border-radius:15px;" />
+<br /><b>Live Terminal Activity</b>
+</td>
+<td width="50%" align="center">
+<img src="https://raw.githubusercontent.com/CodeBySonu95/GitPush-Pro/main/assets/screenshot3.jpg" width="100%" style="border-radius:15px;" />
+<br /><b>Commit Dashboard</b>
+</td>
+</tr>
+</table>
+🔥 Key Features
+<table width="100%">
+<tr>
+<td>
+<h3>⚡ High Performance</h3>
+Real-time terminal output to track uploads and sync processes instantly.
+</td>
+<td>
+<h3>🛡️ Secure Auth</h3>
+Full integration with GitHub Personal Access Tokens (PAT) for encrypted connections.
+</td>
+</tr>
+<tr>
+<td>
+<h3>📂 Smart File Picker</h3>
+Native support for APKs, .swb (Sketchware), and media files with bulk staging.
+</td>
+<td>
+<h3>🎨 Material 3 UI</h3>
+A dark-themed, information-dense interface built with modern design principles.
+</td>
+</tr>
+</table>
+🛠️ Technology Stack
+| Component | Technology |
+|---|---|
+| Language | <img src="https://www.google.com/search?q=https://img.shields.io/badge/Java-ED8B00%3Fstyle%3Dflat-square%26logo%3Djava%26logoColor%3Dwhite" /> |
+| Environment | <img src="https://www.google.com/search?q=https://img.shields.io/badge/Sketchware%2520Pro-E91E63%3Fstyle%3Dflat-square" /> |
+| API Integration | <img src="https://www.google.com/search?q=https://img.shields.io/badge/GitHub%2520REST-181717%3Fstyle%3Dflat-square%26logo%3Dgithub%26logoColor%3Dwhite" /> |
+| Design System | <img src="https://www.google.com/search?q=https://img.shields.io/badge/Material%2520Design%25203-4285F4%3Fstyle%3Dflat-square" /> |
+🚀 Quick Start Guide
+ * Get Token: Go to Settings > Developer Settings > Tokens on GitHub and generate a PAT.
+ * Connect: Open GitPush Pro and enter your credentials.
+ * Stage: Select your files via the floating action button.
+ * Push: Write your commit message and hit <kbd>COMMIT & PUSH</kbd>.
+🤝 Contribution & Support
+<p align="left">
+We love contributors! If you want to improve <b>GitPush Pro</b>, feel free to fork the repo and submit a PR.
+<br /><br />
+<a href="https://www.google.com/search?q=https://github.com/CodeBySonu95/issues">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Report%2520Bug-Critical-red%3Fstyle%3Dflat-square" />
+</a>
+<a href="https://www.google.com/search?q=https://github.com/CodeBySonu95">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Follow%2520Author-CodeBySonu95-blue%3Fstyle%3Dflat-square" />
+</a>
+</p>
+<div align="center">
+<br />
+<sub>Built with ❤️ by <b>Sonu Singh</b></sub>
+</div>
