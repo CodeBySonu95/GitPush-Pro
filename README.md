@@ -50,6 +50,6 @@ Contributions are welcome! If you find a bug or want to suggest a feature, pleas
 Developed with ❤️ by <b>CodeBySonu95</b>
 <br />
 <a href="https://www.google.com/search?q=https://github.com/CodeBySonu95">
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/Follow-Sonu%2520Singh-blue%3Fstyle%3Dflat-square%26logo%3Dgithub" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Follow-Sonu%2520Singh-blue%3Fstyle%3Dflat-square%26logo%3Dgithub" alt="Follow" />
 </a>
 </div>
