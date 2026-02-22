@@ -5,7 +5,7 @@ The Ultimate Mobile Tool for GitHub Developers
 <img src="https://img.shields.io/badge/Version-1.0.0-blue?style=for-the-badge" alt="Version" />
 <img src="https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Platform" />
 <img src="https://img.shields.io/badge/Framework-Sketchware%20Pro-E91E63?style=for-the-badge" alt="Framework" />
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/License-Custom-yellow%3Fstyle%3Dfor-the-badge" alt="License" />
+<img src="https://img.shields.io/badge/License-Custom-yellow?style=for-the-badge" alt="License" />
 </p>
 <p align="center">
 <b>GitPush Pro</b> allows you to manage, commit, and push your code directly from your Android device.
@@ -49,7 +49,7 @@ Contributions are welcome! If you find a bug or want to suggest a feature, pleas
 <br />
 Developed with ❤️ by <b>CodeBySonu95</b>
 <br />
-<a href="https://www.google.com/search?q=https://github.com/CodeBySonu95">
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/Follow-Sonu%2520Singh-blue%3Fstyle%3Dflat-square%26logo%3Dgithub" alt="Follow" />
+<a href="https://github.com/CodeBySonu95">
+<img src="https://img.shields.io/badge/Follow-Sonu%20Singh-blue?style=flat-square&logo=github" alt="Follow" />
 </a>
 </div>
