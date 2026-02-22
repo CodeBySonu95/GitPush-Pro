@@ -1,4 +1,10 @@
 🚀 GitPush Pro
+​<p align="center">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Platform-Android-3DDC84%3Fstyle%3Dfor-the-badge%26logo%3Dandroid%26logoColor%3Dwhite" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Java-8%252B-orange%3Fstyle%3Dfor-the-badge%26logo%3Djava" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/UI-Material%25203-blue%3Fstyle%3Dfor-the-badge" />
+<img src="https://www.google.com/search?q=https://img.shields.io/github/license/CodeBySonu95/GitPush-Pro%3Fstyle%3Dfor-the-badge" />
+</p>
 ​GitPush Pro is a high-performance, user-centric mobile utility designed for developers to manage GitHub repositories directly from Android devices. It eliminates the need for a PC by providing a seamless interface to commit files, track logs, and push updates on the go.
 ​✨ Key Features
 ​📟 Real-time Terminal: Track your upload progress and synchronization logs through a built-in terminal activity.
@@ -30,4 +36,5 @@
 ​Pull Requests: Fork the repo, create your feature branch, and submit a PR.
 ​👨‍💻 Author
 ​Developed with ❤️ by CodeBySonu95
-​Disclaimer: This tool is intended for mobile developers who need a reliable way to manage their codebases without constant access to a desktop environment.
+​[!IMPORTANT]
+This tool is intended for mobile developers who need a reliable way to manage their codebases without constant access to a desktop environment.
