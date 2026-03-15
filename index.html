@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitPush Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0B0E0B;
+    --bg2:       #151815;
+    --surface:   #1A1C1A;
+    --icon-bg:   #1B2A16;
+    --border:    #222222;
+    --green:     #52D02E;
+    --green-dim: rgba(82,208,46,0.15);
+    --green-glow:0 0 24px rgba(82,208,46,0.35);
+    --text:      #FFFFFF;
+    --text-mid:  #9E9E9E;
+    --text-dim:  #666666;
+    --text-dark: #444444;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* ── CURSOR ── */
+  .cursor {
+    width: 10px; height: 10px;
+    background: var(--green);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s;
+    box-shadow: var(--green-glow);
+  }
+  .cursor-ring {
+    width: 32px; height: 32px;
+    border: 1px solid rgba(82,208,46,0.4);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.15s ease;
+  }
+
+  /* ── GRID BG ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(82,208,46,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(82,208,46,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── SCANLINES ── */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── CORNERS ── */
+  .corner {
+    position: fixed;
+    width: 50px; height: 50px;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .corner-tl { top: 16px; left: 16px; border-top: 1px solid rgba(82,208,46,0.25); border-left: 1px solid rgba(82,208,46,0.25); }
+  .corner-tr { top: 16px; right: 16px; border-top: 1px solid rgba(82,208,46,0.25); border-right: 1px solid rgba(82,208,46,0.25); }
+  .corner-bl { bottom: 16px; left: 16px; border-bottom: 1px solid rgba(82,208,46,0.25); border-left: 1px solid rgba(82,208,46,0.25); }
+  .corner-br { bottom: 16px; right: 16px; border-bottom: 1px solid rgba(82,208,46,0.25); border-right: 1px solid rgba(82,208,46,0.25); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(82,208,46,0.07) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: translate(-50%,-50%) scale(1); }
+    50%       { opacity: 1;   transform: translate(-50%,-50%) scale(1.15); }
+  }
+
+  .ascii-art {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: clamp(5px, 1.15vw, 10.5px);
+    color: var(--green);
+    line-height: 1.2;
+    text-shadow: 0 0 12px rgba(82,208,46,0.5);
+    white-space: pre;
+    margin-bottom: 28px;
+    animation: flicker 9s ease-in-out infinite;
+  }
+
+  @keyframes flicker {
+    0%,94%,100% { opacity: 1; }
+    95% { opacity: 0.3; }
+    96% { opacity: 1; }
+    97% { opacity: 0.5; }
+    98% { opacity: 1; }
+  }
+
+  .tagline {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(13px, 2.5vw, 18px);
+    font-weight: 400;
+    color: var(--text-dim);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .tagline span { color: var(--green); font-weight: 700; }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 44px;
+  }
+
+  .badge {
+    padding: 7px 14px;
+    border: 1px solid var(--green);
+    color: var(--green);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  .badge::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--green);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .badge:hover::before { opacity: 0.12; }
+  .badge:hover { transform: translateY(-2px); box-shadow: var(--green-glow); }
+
+  .badge-dim { border-color: var(--text-dark); color: var(--text-dark); }
+  .badge-dim:hover { border-color: var(--green); color: var(--green); }
+
+  .hero-desc {
+    max-width: 580px;
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--text-mid);
+    border-left: 2px solid var(--green);
+    padding-left: 20px;
+    text-align: left;
+  }
+
+  .hero-desc strong { color: var(--green); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 28px; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-dark);
+    font-size: 10px;
+    letter-spacing: 3px;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50%      { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ── STATUS BAR (app footer style) ── */
+  .status-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 36px;
+    font-size: 11px;
+    color: var(--text-mid);
+    letter-spacing: 1px;
+  }
+
+  .status-dot {
+    width: 7px; height: 7px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--green);
+    animation: blink-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes blink-dot {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 80px 0;
+    border-top: 1px solid rgba(82,208,46,0.08);
+    position: relative;
+    z-index: 2;
+  }
+
+  .section-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--green);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(82,208,46,0.4), transparent);
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(26px, 4.5vw, 44px);
+    font-weight: 800;
+    color: white;
+    margin-bottom: 44px;
+    line-height: 1.1;
+  }
+
+  .hl { color: var(--green); }
+
+  /* ── FEATURES ── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 14px;
+  }
+
+  .feature-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 26px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    border-radius: 2px;
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--green), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+  }
+
+  .feature-card:hover::before { transform: translateX(100%); }
+  .feature-card:hover {
+    border-color: rgba(82,208,46,0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 28px rgba(82,208,46,0.08);
+  }
+
+  .feature-icon {
+    width: 36px; height: 36px;
+    background: var(--icon-bg);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 16px;
+  }
+
+  .feature-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: white;
+    margin-bottom: 8px;
+  }
+
+  .feature-desc {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  /* ── SCREENSHOTS ── */
+  .screenshots {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .screenshot-frame {
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s;
+    background: var(--bg2);
+  }
+
+  .screenshot-frame::after {
+    content: '';
+    position: absolute; inset: 0;
+    border: 2px solid var(--green);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  .screenshot-frame:hover::after { opacity: 0.5; }
+  .screenshot-frame:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(82,208,46,0.1); }
+  .screenshot-frame img { width: 100%; display: block; }
+
+  /* ── TERMINAL ── */
+  .terminal {
+    background: #000000;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .terminal-header {
+    background: var(--bg2);
+    padding: 11px 18px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dot { width: 11px; height: 11px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #ffbd2e; }
+  .dot-g { background: #28c840; }
+
+  .terminal-title {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-left: 6px;
+    letter-spacing: 1px;
+  }
+
+  .terminal-body {
+    padding: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 2;
+  }
+
+  .t-prompt { color: var(--green); }
+  .t-cmd    { color: white; }
+  .t-key    { color: var(--green); }
+  .t-val    { color: #ce9178; }
+  .t-dim    { color: var(--text-dim); }
+  .t-mid    { color: var(--text-mid); }
+
+  .type-cursor::after {
+    content: '▋';
+    color: var(--green);
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* ── STEPS ── */
+  .steps { display: flex; flex-direction: column; position: relative; }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    left: 23px; top: 24px; bottom: 24px;
+    width: 1px;
+    background: linear-gradient(180deg, var(--green), transparent);
+    opacity: 0.3;
+  }
+
+  .step { display: flex; gap: 22px; padding: 22px 0; }
+
+  .step-num {
+    width: 46px; height: 46px;
+    border: 1px solid rgba(82,208,46,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 16px;
+    color: var(--green);
+    flex-shrink: 0;
+    background: var(--bg);
+    position: relative; z-index: 1;
+    transition: all 0.3s;
+  }
+
+  .step:hover .step-num {
+    background: var(--green);
+    color: #000;
+    box-shadow: var(--green-glow);
+    border-color: var(--green);
+  }
+
+  .step-content h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px; font-weight: 700;
+    color: white; margin-bottom: 6px;
+  }
+
+  .step-content p { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+
+  .step-content code {
+    background: var(--icon-bg);
+    color: var(--green);
+    padding: 2px 7px;
+    font-size: 12px;
+    border: 1px solid rgba(82,208,46,0.2);
+  }
+
+  /* ── TREE ── */
+  .tree {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; line-height: 2;
+    background: #000000;
+    border: 1px solid var(--border);
+    padding: 26px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tree::after {
+    content: 'PROJECT STRUCTURE';
+    position: absolute; top: 12px; right: 18px;
+    font-size: 10px; letter-spacing: 3px;
+    color: var(--text-dark);
+  }
+
+  .tree-dir  { color: var(--green); font-weight: 700; }
+  .tree-file { color: var(--text-mid); }
+  .tree-note { color: var(--text-dark); }
+
+  /* ── CONTRIB ── */
+  .contrib-block {
+    background: #000;
+    border: 1px solid var(--border);
+    padding: 26px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; line-height: 2.2;
+  }
+
+  .c-num  { color: var(--green); }
+  .c-cmd  { color: #9cdcfe; }
+  .c-str  { color: #ce9178; }
+
+  /* ── LICENSE ── */
+  .license-block {
+    border: 1px solid rgba(82,208,46,0.2);
+    padding: 26px;
+    background: rgba(82,208,46,0.03);
+    position: relative;
+    font-size: 13px; line-height: 1.9;
+    color: var(--text-dim);
+  }
+
+  .license-block::before {
+    content: 'GNU GPL v3.0';
+    position: absolute; top: 0; left: 20px;
+    background: var(--bg); padding: 0 10px;
+    color: var(--green); font-size: 11px;
+    letter-spacing: 2px;
+    transform: translateY(-50%);
+    font-family: 'Share Tech Mono', monospace;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 60px 0 80px;
+    text-align: center;
+    border-top: 1px solid rgba(82,208,46,0.08);
+    position: relative; z-index: 2;
+  }
+
+  .footer-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px; font-weight: 800;
+    color: white; margin-bottom: 8px;
+  }
+
+  .footer-name span { color: var(--green); }
+
+  .footer-quote {
+    font-size: 13px; color: var(--text-dim);
+    font-style: italic; margin-bottom: 28px;
+  }
+
+  .footer-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 26px;
+    border: 1px solid var(--green);
+    color: var(--green);
+    text-decoration: none;
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    transition: all 0.3s;
+    font-family: 'Share Tech Mono', monospace;
+  }
+
+  .footer-link:hover {
+    background: var(--green);
+    color: #000;
+    box-shadow: var(--green-glow);
+  }
+
+  /* ── REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── LINKS ── */
+  a { color: var(--green); }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="corner corner-tl"></div>
+<div class="corner corner-tr"></div>
+<div class="corner corner-bl"></div>
+<div class="corner corner-br"></div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-glow"></div>
+
+  <pre class="ascii-art"> ██████╗ ██╗████████╗██████╗ ██╗   ██╗███████╗██╗  ██╗    ██████╗ ██████╗  ██████╗
+██╔════╝ ██║╚══██╔══╝██╔══██╗██║   ██║██╔════╝██║  ██║    ██╔══██╗██╔══██╗██╔═══██╗
+██║  ███╗██║   ██║   ██████╔╝██║   ██║███████╗███████║    ██████╔╝██████╔╝██║   ██║
+██║   ██║██║   ██║   ██╔═══╝ ██║   ██║╚════██║██╔══██║    ██╔═══╝ ██╔══██╗██║   ██║
+╚██████╔╝██║   ██║   ██║     ╚██████╔╝███████║██║  ██║    ██║     ██║  ██║╚██████╔╝
+ ╚═════╝ ╚═╝   ╚═╝   ╚═╝      ╚═════╝ ╚══════╝╚═╝  ╚═╝    ╚═╝     ╚═╝  ╚═╝ ╚═════╝</pre>
+
+  <p class="tagline">Push any file to GitHub. <span>No PC needed.</span></p>
+
+  <div class="badges">
+    <span class="badge">▲ Android</span>
+    <span class="badge badge-dim">⬡ Sketchware Pro</span>
+    <span class="badge">⚖ GPL v3.0</span>
+    <span class="badge badge-dim">~ 7–8 MB</span>
+    <span class="badge">★ Open Source</span>
+  </div>
+
+  <p class="hero-desc">
+    <strong>GitPush Pro</strong> is a lightweight Android app that lets you push any file directly to your GitHub repository from your phone.<br><br>
+    Set up your token and repository URL <strong>once</strong>. Everything is saved. After that — just pick a file and push.
+  </p>
+
+  <div class="status-bar">
+    <div class="status-dot"></div>
+    <span>SYSTEM STATUS: OPTIMAL</span>
+    <span style="color:var(--text-dark)">— CodeBySonu</span>
+  </div>
+
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <span>↓</span>
+  </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">01 // FEATURES</div>
+    <h2 class="section-title reveal">What can it <span class="hl">do?</span></h2>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">📤</div>
+        <div class="feature-title">Push Any File</div>
+        <div class="feature-desc">APKs, .swb files, images, or any binary/text file — pushed directly to your GitHub repo.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🔐</div>
+        <div class="feature-title">One-Time Setup</div>
+        <div class="feature-desc">Enter your GitHub Token and Repository URL once. Saved in SharedPreferences — no repeat needed.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📟</div>
+        <div class="feature-title">Live Terminal Output</div>
+        <div class="feature-desc">Watch the push process step by step in real time. Every log line printed as it happens.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🕒</div>
+        <div class="feature-title">Commit History</div>
+        <div class="feature-desc">Every push is logged with commit SHA, branch name, and timestamp.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🔄</div>
+        <div class="feature-title">Switch Repo</div>
+        <div class="feature-desc">Change your target repository anytime from inside the app without reinstalling or resetting.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Minimal & Fast</div>
+        <div class="feature-desc">App size is just ~7–8 MB. No bloat, no unnecessary permissions, no background services.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SCREENSHOTS ── -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">02 // SCREENSHOTS</div>
+    <h2 class="section-title reveal">See it in <span class="hl">action</span></h2>
+    <div class="screenshots reveal">
+      <div class="screenshot-frame">
+        <img src="https://raw.githubusercontent.com/CodeBySonu95/GitPush-Pro/main/assets/screenshot2.jpg" alt="Activity Screen"
+          onerror="this.parentElement.style.minHeight='320px';this.style.display='none'">
+      </div>
+      <div class="screenshot-frame">
+        <img src="https://raw.githubusercontent.com/CodeBySonu95/GitPush-Pro/main/assets/screenshot3.jpg" alt="Upload & Commit Screen"
+          onerror="this.parentElement.style.minHeight='320px';this.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TECH STACK ── -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">03 // TECH STACK</div>
+    <h2 class="section-title reveal">What's inside <span class="hl">the build?</span></h2>
+    <div class="terminal reveal">
+      <div class="terminal-header">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+        <span class="terminal-title">tech-stack.json</span>
+      </div>
+      <div class="terminal-body">
+        <div><span class="t-prompt">[$] </span><span class="t-cmd">cat tech-stack.json</span></div>
+        <div>&nbsp;</div>
+        <div><span class="t-dim">{</span></div>
+        <div>&nbsp;&nbsp;<span class="t-key">"language"</span><span class="t-dim">    →  </span><span class="t-val">"Java 8+"</span></div>
+        <div>&nbsp;&nbsp;<span class="t-key">"platform"</span><span class="t-dim">    →  </span><span class="t-val">"Android"</span></div>
+        <div>&nbsp;&nbsp;<span class="t-key">"built_with"</span><span class="t-dim">  →  </span><span class="t-val">"Sketchware Pro"</span></div>
+        <div>&nbsp;&nbsp;<span class="t-key">"api"</span><span class="t-dim">         →  </span><span class="t-val">"GitHub REST API v3"</span></div>
+        <div>&nbsp;&nbsp;<span class="t-key">"storage"</span><span class="t-dim">     →  </span><span class="t-val">"SharedPreferences"</span></div>
+        <div>&nbsp;&nbsp;<span class="t-key">"theme"</span><span class="t-dim">       →  </span><span class="t-val">"Dark Terminal  #0B0E0B + #52D02E"</span></div>
+        <div>&nbsp;&nbsp;<span class="t-key">"license"</span><span class="t-dim">     →  </span><span class="t-val">"GNU GPL v3.0"</span></div>
+        <div>&nbsp;&nbsp;<span class="t-key">"size"</span><span class="t-dim">        →  </span><span class="t-val">"~7–8 MB"</span></div>
+        <div><span class="t-dim">}</span></div>
+        <div>&nbsp;</div>
+        <div><span class="t-prompt">[$] </span><span class="type-cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SETUP ── -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">04 // SETUP</div>
+    <h2 class="section-title reveal">Get started in <span class="hl">4 steps</span></h2>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Generate a GitHub Token</h3>
+          <p>Go to GitHub Settings → Developer Settings → Personal Access Tokens → enable <code>repo</code> scope</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>Connect Your Repository</h3>
+          <p>Open the app → enter your Token and Repository URL → tap <code>Connect Repository</code></p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Select Files</h3>
+          <p>Tap <code>Select Files</code> → pick your APK, <code>.swb</code>, or any file → add to staging</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Commit & Push</h3>
+          <p>Write a commit message → tap <code>COMMIT & PUSH</code> → live terminal shows the progress</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STRUCTURE ── -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">05 // STRUCTURE</div>
+    <h2 class="section-title reveal">Project <span class="hl">Architecture</span></h2>
+    <div class="tree reveal">
+      <div><span class="tree-dir">GitPush-Pro/</span></div>
+      <div>├── <span class="tree-dir">app/</span></div>
+      <div>│   ├── <span class="tree-dir">src/main/java/</span>   <span class="tree-note">  # Java source files</span></div>
+      <div>│   ├── <span class="tree-dir">src/main/res/</span>    <span class="tree-note">  # UI resources</span></div>
+      <div>│   └── <span class="tree-file">AndroidManifest.xml</span></div>
+      <div>├── <span class="tree-dir">gradle/wrapper/</span></div>
+      <div>│   ├── <span class="tree-file">gradle-wrapper.jar</span></div>
+      <div>│   └── <span class="tree-file">gradle-wrapper.properties</span></div>
+      <div>├── <span class="tree-file">build.gradle</span>        <span class="tree-note">  # AGP 8.12.0</span></div>
+      <div>├── <span class="tree-file">settings.gradle</span></div>
+      <div>├── <span class="tree-file">gradlew</span>             <span class="tree-note">  # Linux / Mac</span></div>
+      <div>├── <span class="tree-file">gradlew.bat</span>         <span class="tree-note">  # Windows</span></div>
+      <div>├── <span class="tree-file">LICENSE</span>             <span class="tree-note">  # GNU GPL v3.0</span></div>
+      <div>└── <span class="tree-file">README.md</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTRIBUTING ── -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">06 // CONTRIBUTE</div>
+    <h2 class="section-title reveal">Open Source — <span class="hl">contributions welcome</span></h2>
+    <div class="contrib-block reveal">
+      <div><span class="c-num">1.</span>  Fork this repo</div>
+      <div><span class="c-num">2.</span>  <span class="c-cmd">git checkout -b</span>  <span class="c-str">feature/YourFeature</span></div>
+      <div><span class="c-num">3.</span>  <span class="c-cmd">git commit -m</span>    <span class="c-str">"Add YourFeature"</span></div>
+      <div><span class="c-num">4.</span>  <span class="c-cmd">git push origin</span>  <span class="c-str">feature/YourFeature</span></div>
+      <div><span class="c-num">5.</span>  Open a Pull Request</div>
+    </div>
+    <p style="margin-top:20px;font-size:13px;color:var(--text-dim)">
+      Found a bug? → <a href="https://github.com/CodeBySonu95/GitPush-Pro/issues">Open an Issue</a>
+    </p>
+  </div>
+</section>
+
+<!-- ── LICENSE ── -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">07 // LICENSE</div>
+    <h2 class="section-title reveal"><span class="hl">GNU GPL</span> v3.0</h2>
+    <div class="license-block reveal">
+      GitPush Pro — Copyright (C) 2026 CodeBySonu95<br><br>
+      This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br><br>
+      This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.<br><br>
+      See the full <a href="./LICENSE">LICENSE</a> file for details.
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-name">Code<span>By</span>Sonu95</div>
+    <p class="footer-quote">"For developers who never stop coding."</p>
+    <a href="https://github.com/CodeBySonu95" class="footer-link">⬡ github.com/CodeBySonu95</a>
+  </div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring   = document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx-5+'px';
+    cursor.style.top  = my-5+'px';
+  });
+
+  (function animRing(){
+    rx += (mx-rx)*0.12;
+    ry += (my-ry)*0.12;
+    ring.style.left = rx-16+'px';
+    ring.style.top  = ry-16+'px';
+    requestAnimationFrame(animRing);
+  })();
+
+  // Hover scale
+  document.querySelectorAll('a,.feature-card,.badge,.step-num,.footer-link').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{ cursor.style.transform='scale(2)'; ring.style.transform='scale(1.5)'; });
+    el.addEventListener('mouseleave',()=>{ cursor.style.transform='scale(1)'; ring.style.transform='scale(1)'; });
+  });
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach((e,i)=>{
+      if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'), i*70);
+    });
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
