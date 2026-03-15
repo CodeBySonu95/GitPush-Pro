@@ -44,8 +44,9 @@ Set up your GitHub token and repository URL once. Everything is saved. After tha
 ## Screenshots
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/CodeBySonu95/GitPush-Pro/main/assets/screenshot2.jpg" width="22%" />
-  <img src="https://raw.githubusercontent.com/CodeBySonu95/GitPush-Pro/main/assets/screenshot3.jpg" width="22%" />
+  <img src="https://raw.githubusercontent.com/CodeBySonu95/GitPush-Pro/main/assets/screenshot2.jpg" width="30%" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/CodeBySonu95/GitPush-Pro/main/assets/screenshot3.jpg" width="30%" />
 </p>
 
 ---
