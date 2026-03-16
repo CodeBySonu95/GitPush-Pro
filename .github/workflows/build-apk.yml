@@ -24,12 +24,12 @@ jobs:
       - name: Grant permission
         run: chmod +x gradlew
 
-      - name: Build APK
-        run: ./gradlew assembleRelease
+      - name: Build Debug APK for Testing
+        run: ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-release
+          name: app-test-build
           path: app/build/outputs/apk/**/*.apk
           
