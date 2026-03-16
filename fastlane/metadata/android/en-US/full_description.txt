@@ -1,0 +1,10 @@
+GitPush Pro is a lightweight Android application that allows users to push files directly to their GitHub repositories without needing a PC.
+
+Features:
+- Push any file (APK, project files, images, etc.)
+- One-time GitHub token and repository setup
+- Live terminal-style output during push
+- Commit history with SHA and timestamps
+- Minimal app size (~7–8 MB)
+
+The app communicates with the GitHub REST API using OkHttp and does not rely on proprietary services such as Google Play Services.
