@@ -29,10 +29,19 @@ jobs:
           --gradle-version 8.13 \
           --gradle-distribution-sha256-sum 20f1b1176237254a6fc204d8434196fa11a4cfb387567519c61556e8710aed78
 
-      - name: Commit & Push
+      - name: Clean up large files
+        run: |
+          rm -rf gradle-8.13
+          rm gradle-8.13-bin.zip
+
+      - name: Commit & Push specific files only
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
+          git add gradle/wrapper/gradle-wrapper.jar
+          git add gradle/wrapper/gradle-wrapper.properties
+          git add gradlew
+          git add gradlew.bat
           git commit -m "Fix Gradle Wrapper for F-Droid"
           git push
+          
